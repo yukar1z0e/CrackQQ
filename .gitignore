@@ -318,3 +318,14 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# ZIP
+*.ZIP
+*.zip
+*.rar
+*.RAR
+*.7z
+
+# Android
+QQInternational.apk
+mobileqq_android.apk
