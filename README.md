@@ -1,0 +1,2 @@
+# CrackQQ
+QQ International Version
