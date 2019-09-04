@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -38,6 +39,39 @@ void getResultVersion2(){
     }
 }
 
+void getPicPath(){
+    FILE *fid = fopen("E:/qq.txt", "r");
+    char line[2048];
+    memset(line, 0, 2048);
+    while (!feof(fid)) {
+        fgets(line, 2048, fid);
+        string str=line;
+        regex reg("/storage(.*?)png");
+        smatch m;
+        bool found=regex_match(str, m, reg);
+        cout<<line;
+        cout<<found;
+        if(found){
+            cout<<m.str(0);
+        }
+    }
+}
+
+void pullPic(string phonenumber){
+    string command;
+
+    command="cd /";
+    system(command.c_str());
+    command="e:";
+    system(command.c_str());
+    command="mkdir "+phonenumber;
+    system(command.c_str());
+    //string path=getPicPath();
+    //command="adb pull "+path+" E://" + phonenumber;
+    cout<<command<<endl;
+    //system(command.c_str());
+}
+
 void search(string phoneNumber) {
     string command;
     //kill
@@ -59,7 +93,9 @@ void search(string phoneNumber) {
     //search
     command="adb shell input tap 690 290";
     system(command.c_str());
-
+    //tap pic
+    command="adb shell input tap 90 615";
+    system(command.c_str());
     cout<<"继续查询"<<endl;
 }
 
@@ -111,6 +147,8 @@ int main() {
         Sleep(3000);
         pullReslutVerison2();
         getResultVersion2();
+        getPicPath();
+        //pullPic(phoneNumber);
     }
     cout<<"查询结束"<<endl;
     return 0;

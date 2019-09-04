@@ -69,7 +69,7 @@ public class crackmain implements IXposedHookLoadPackage {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 Field c = findField(ProfileImageInfoClass, "c");
-                Log.d("crackQQ", "Photo Path:" + c.get(param.args[1]).toString());
+                Log.d("crackQQ", "PICPATH:" + c.get(param.args[1]).toString()+":END");
             }
         });
     }
