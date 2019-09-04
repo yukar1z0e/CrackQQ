@@ -42,9 +42,20 @@ public class crackmain implements IXposedHookLoadPackage {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     lpparam = loadPackageParam;
-                    Log.d("crackQQ","I am in "+lpparam.packageName);
+                    getInfo();
                 }
             });
         }
+    }
+
+    public void getInfo(){
+        final Class<?> ProfileActivity$AllInOneClass=findClass("com.tencent.mobileqq.activity.ProfileActivity$AllInOne",lpparam.classLoader);
+
+        findAndHookMethod(ProfileActivity$AllInOneClass, "a", ProfileActivity$AllInOneClass, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                Log.d("crackQQ","Crack In AllInOne "+param.args[0]+" retval: "+param.getResult());
+            }
+        });
     }
 }
