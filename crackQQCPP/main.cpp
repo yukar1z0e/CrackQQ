@@ -23,6 +23,21 @@ void getResult() {
     }
 }
 
+void pullReslutVerison2(){
+    string command = R"(adb logcat -d crackQQ:D *:S *:W *:E *:F> E:/qq.txt)";
+    system(command.c_str());
+}
+
+void getResultVersion2(){
+    FILE *fid = fopen("E:/qq.txt", "r");
+    char line[2048];
+    memset(line, 0, 2048);
+    while (!feof(fid)) {
+        fgets(line, 2048, fid);
+        cout << line << endl;
+    }
+}
+
 void search(string phoneNumber) {
     string command;
     //kill
@@ -46,6 +61,12 @@ void search(string phoneNumber) {
     system(command.c_str());
 
     cout<<"继续查询"<<endl;
+}
+
+void kill(){
+    //kill
+    string command="adb shell am force-stop com.tencent.mobileqqi";
+    system(command.c_str());
 }
 
 void readFile() {
@@ -83,13 +104,12 @@ int main() {
         string phoneNumber;
         cout << "输入手机号" << endl;
         cin >> phoneNumber;
-        writeReslutToLog();
         if(phoneNumber=="0"){
             break;
         }
         search(phoneNumber);
-        pullReslut();
-        getResult();
+        pullReslutVerison2();
+        getResultVersion2();
     }
     cout<<"查询结束"<<endl;
     return 0;
