@@ -50,6 +50,7 @@ public class crackmain implements IXposedHookLoadPackage {
 
     public void getInfo(){
         final Class<?> ProfileActivity$AllInOneClass=findClass("com.tencent.mobileqq.activity.ProfileActivity$AllInOne",lpparam.classLoader);
+        final Class<?> ProfileActivity$CardContactInfoClass=findClass("com.tencent.mobileqq.activity.ProfileActivity$CardContactInfo",lpparam.classLoader);
 
         findAndHookMethod(ProfileActivity$AllInOneClass, "a", ProfileActivity$AllInOneClass, new XC_MethodHook() {
             @Override
@@ -59,6 +60,13 @@ public class crackmain implements IXposedHookLoadPackage {
                 for(Field AllInOneField:AllInOneFields){
                     Log.d("crackQQ","Field Name: "+AllInOneField.getName()+" Field Value: "+AllInOneField.get(param.args[0]));
                 }
+            }
+        });
+
+        findAndHookConstructor(ProfileActivity$CardContactInfoClass, String.class, String.class, String.class, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                Log.d("crackQQ","String 1: "+param.args[0]+" String 2: "+param.args[1]+" String 3: "+param.args[2]);
             }
         });
     }
