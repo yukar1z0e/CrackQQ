@@ -54,7 +54,7 @@ public class crackmain implements IXposedHookLoadPackage {
         findAndHookMethod(ProfileActivity$AllInOneClass, "a", ProfileActivity$AllInOneClass, new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Log.d("crackQQ","Crack In AllInOne "+param.args[0]+" retval: "+param.getResult());
+                Log.d("crackQQ","Crack In AllInOne "+param.args[0]);
             }
         });
     }
