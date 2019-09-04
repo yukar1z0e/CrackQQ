@@ -43,6 +43,7 @@ public class crackmain implements IXposedHookLoadPackage {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     lpparam = loadPackageParam;
                     getPeerInfo();
+                    getAvatar();
                 }
             });
         }
@@ -92,6 +93,15 @@ public class crackmain implements IXposedHookLoadPackage {
     }
 
     public void getAvatar(){
+        final Class<?> aClass=findClass("com.tencent.mobileqq.activity.FriendProfileImageAvatar",lpparam.classLoader);
+        final Class<?> BaseActivityClass=findClass("com.tencent.mobileqq.app.BaseActivity",lpparam.classLoader);
+        final Class<?> ProfileImageInfoClass=findClass("com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo",lpparam.classLoader);
 
+        findAndHookMethod(aClass, "a", BaseActivityClass, ProfileImageInfoClass, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                Log.d("crackQQ","I am in again");
+            }
+        });
     }
 }
