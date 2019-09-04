@@ -1,0 +1,3 @@
+"C:\Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\crackQQCPP.dir/objects.a
+C:\Files\MinGW\bin\ar.exe cr CMakeFiles\crackQQCPP.dir/objects.a @CMakeFiles\crackQQCPP.dir\objects1.rsp
+C:\Files\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\crackQQCPP.dir/objects.a -Wl,--no-whole-archive  -o crackQQCPP.exe -Wl,--out-implib,libcrackQQCPP.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\crackQQCPP.dir\linklibs.rsp
