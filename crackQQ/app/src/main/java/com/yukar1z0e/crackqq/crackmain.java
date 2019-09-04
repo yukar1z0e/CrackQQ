@@ -42,12 +42,24 @@ public class crackmain implements IXposedHookLoadPackage {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     lpparam = loadPackageParam;
-                    getInfo();
+                    getPeerInfo();
                 }
             });
         }
     }
 
+    public void getPeerInfo(){
+        final Class<?> ProfileActivity$AllInOneClass=findClass("com.tencent.mobileqq.activity.ProfileActivity$AllInOne",lpparam.classLoader);
+
+        findAndHookMethod(ProfileActivity$AllInOneClass, "a", ProfileActivity$AllInOneClass, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                Log.d("crackQQ",param.args[0].toString());
+            }
+        });
+    }
+
+    //Test
     public void getInfo(){
         final Class<?> ProfileActivity$AllInOneClass=findClass("com.tencent.mobileqq.activity.ProfileActivity$AllInOne",lpparam.classLoader);
         final Class<?> ProfileActivity$CardContactInfoClass=findClass("com.tencent.mobileqq.activity.ProfileActivity$CardContactInfo",lpparam.classLoader);
@@ -74,7 +86,5 @@ public class crackmain implements IXposedHookLoadPackage {
                 Log.d("crackQQ","a: "+CardContactInfoafield.get(a)+" b: "+CardContactInfobfield.get(a)+" c: "+CardContactInfocfield.get(a));
             }
         });
-
-
     }
 }
