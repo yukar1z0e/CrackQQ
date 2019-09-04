@@ -39,7 +39,7 @@ void getResultVersion2(){
     }
 }
 
-void getPicPath(){
+string getPicPath(){
     FILE *fid = fopen("E:/qq.txt", "r");
     char line[2048];
     memset(line, 0, 2048);
@@ -48,28 +48,23 @@ void getPicPath(){
         string str=line;
         regex reg("/storage(.*?)png");
         smatch m;
-        bool found=regex_match(str, m, reg);
+        bool found=regex_search(str, m, reg);
         cout<<line;
         cout<<found;
         if(found){
-            cout<<m.str(0);
+            return m.str(0);
         }
     }
 }
 
 void pullPic(string phonenumber){
     string command;
-
-    command="cd /";
-    system(command.c_str());
-    command="e:";
-    system(command.c_str());
     command="mkdir "+phonenumber;
     system(command.c_str());
-    //string path=getPicPath();
-    //command="adb pull "+path+" E://" + phonenumber;
+    string path=getPicPath();
+    command="adb pull "+path+" C:\\Code\\MoblieSecurity\\QQ\\crackQQCPP\\cmake-build-debug\\" + phonenumber;
     cout<<command<<endl;
-    //system(command.c_str());
+    system(command.c_str());
 }
 
 void search(string phoneNumber) {
@@ -148,7 +143,7 @@ int main() {
         pullReslutVerison2();
         getResultVersion2();
         getPicPath();
-        //pullPic(phoneNumber);
+        pullPic(phoneNumber);
     }
     cout<<"查询结束"<<endl;
     return 0;
