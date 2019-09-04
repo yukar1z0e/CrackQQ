@@ -108,6 +108,7 @@ int main() {
             break;
         }
         search(phoneNumber);
+        Sleep(3000);
         pullReslutVerison2();
         getResultVersion2();
     }
