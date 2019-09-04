@@ -55,6 +55,10 @@ public class crackmain implements IXposedHookLoadPackage {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 Log.d("crackQQ","Crack In AllInOne "+param.args[0]);
+                Field[] AllInOneFields=ProfileActivity$AllInOneClass.getDeclaredFields();
+                for(Field AllInOneField:AllInOneFields){
+                    Log.d("crackQQ","Field Name: "+AllInOneField.getName()+" Field Value: "+AllInOneField.get(param.args[0]));
+                }
             }
         });
     }
