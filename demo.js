@@ -183,8 +183,7 @@ function test(targetClass) {
 setTimeout(function () {
     Java.perform(function () {
         console.log("first entering selector");
-
-        trace("com.tencent.mobileqq.activity.ProfileCardMoreActivity");
+        trace("com.tencent.mobileqq.troop.utils.AvatarTroopUtil");
     });
 }, 0);
 
