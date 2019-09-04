@@ -101,6 +101,14 @@ public class crackmain implements IXposedHookLoadPackage {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 Log.d("crackQQ","I am in again");
+
+                Field[] ProfileImageInfoFields=ProfileImageInfoClass.getDeclaredFields();
+                for(Field ProfileImageInfoField:ProfileImageInfoFields){
+                    Log.d("crackQQ","Field Name: "+ProfileImageInfoField.getName()+" Field Value: "+ProfileImageInfoField.get(param.args[1]));
+                }
+
+                Field c=findField(ProfileImageInfoClass,"c");
+                Log.d("crackQQ","Photo Path:"+c.get(param.args[1]).toString());
             }
         });
     }
