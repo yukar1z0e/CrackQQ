@@ -61,17 +61,17 @@ public class crackmain implements IXposedHookLoadPackage {
                     Log.d("crackQQ","Field Name: "+AllInOneField.getName()+"Field Type: "+AllInOneField.getType()+" Field Value: "+AllInOneField.get(param.args[0]));
                 }
 
-                Field O=findField(ProfileActivity$AllInOneClass,"a");
-                Object a=O.get(param.args[0]);
+                Field Arraylist_field_a=findField(ProfileActivity$AllInOneClass,"a");
+                Object Arraylist_object_a=Arraylist_field_a.get(param.args[0]);
                 ArrayList list=new ArrayList(1);
-                list=(ArrayList)a;
-                Object a1=list.get(0);
+                list=(ArrayList)Arraylist_object_a;
+                Object a=list.get(0);
 
                 Field CardContactInfoafield=findField(ProfileActivity$CardContactInfoClass,"a");
                 Field CardContactInfobfield=findField(ProfileActivity$CardContactInfoClass,"b");
                 Field CardContactInfocfield=findField(ProfileActivity$CardContactInfoClass,"c");
 
-                Log.d("crackQQ","a: "+CardContactInfoafield.get(a1)+" b: "+CardContactInfobfield.get(a1)+" c: "+CardContactInfocfield.get(a1));
+                Log.d("crackQQ","a: "+CardContactInfoafield.get(a)+" b: "+CardContactInfobfield.get(a)+" c: "+CardContactInfocfield.get(a));
             }
         });
 
