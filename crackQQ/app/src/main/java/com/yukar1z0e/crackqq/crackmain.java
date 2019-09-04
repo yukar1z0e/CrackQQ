@@ -58,16 +58,23 @@ public class crackmain implements IXposedHookLoadPackage {
                 Log.d("crackQQ","Crack In AllInOne "+param.args[0]);
                 Field[] AllInOneFields=ProfileActivity$AllInOneClass.getDeclaredFields();
                 for(Field AllInOneField:AllInOneFields){
-                    Log.d("crackQQ","Field Name: "+AllInOneField.getName()+" Field Value: "+AllInOneField.get(param.args[0]));
+                    Log.d("crackQQ","Field Name: "+AllInOneField.getName()+"Field Type: "+AllInOneField.getType()+" Field Value: "+AllInOneField.get(param.args[0]));
                 }
+
+                Field O=findField(ProfileActivity$AllInOneClass,"a");
+                Object a=O.get(param.args[0]);
+                ArrayList list=new ArrayList(1);
+                list=(ArrayList)a;
+                Object a1=list.get(0);
+
+                Field CardContactInfoafield=findField(ProfileActivity$CardContactInfoClass,"a");
+                Field CardContactInfobfield=findField(ProfileActivity$CardContactInfoClass,"b");
+                Field CardContactInfocfield=findField(ProfileActivity$CardContactInfoClass,"c");
+
+                Log.d("crackQQ","a: "+CardContactInfoafield.get(a1)+" b: "+CardContactInfobfield.get(a1)+" c: "+CardContactInfocfield.get(a1));
             }
         });
 
-        findAndHookConstructor(ProfileActivity$CardContactInfoClass, String.class, String.class, String.class, new XC_MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                Log.d("crackQQ","String 1: "+param.args[0]+" String 2: "+param.args[1]+" String 3: "+param.args[2]);
-            }
-        });
+
     }
 }
